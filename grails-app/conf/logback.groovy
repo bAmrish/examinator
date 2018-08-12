@@ -34,3 +34,8 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
 }
 root(ERROR, ['STDOUT'])
+/**
+ * Set the error levels for below to lines to `DEBUG` for debugging spring-security issues.
+ */
+logger 'org.springframework.security', ERROR, ['STDOUT'], false
+logger 'grails.plugin.springsecurity', ERROR, ['STDOUT'], false

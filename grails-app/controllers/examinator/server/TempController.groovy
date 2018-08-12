@@ -1,8 +1,9 @@
 package examinator.server
 
 import grails.converters.JSON
+import org.springframework.security.access.annotation.Secured
 
-
+@Secured(['isFullyAuthenticated()'])
 class TempController {
 
     def tempAccessService

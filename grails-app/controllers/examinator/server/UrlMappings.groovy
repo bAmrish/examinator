@@ -9,6 +9,9 @@ class UrlMappings {
             }
         }
 
+        post "/temp/" (controller: "temp", action: "save")
+
+
         "/"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')

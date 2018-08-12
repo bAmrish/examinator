@@ -19,7 +19,7 @@ db.temp.insertOne({'x': 1});
 use examinator
 ﻿db.createUser({ 
     user: "examinator-server-app",
-    pwd: "Examinator@123",
+    pwd: "Examinator123",
     roles: [
         { role: "readWrite", db: "examinator" }
     ]
@@ -33,7 +33,7 @@ use examinator
 ```mongo
 ﻿db.createUser({ 
     user: "examinator-server-app-admin",
-    pwd: "Examinator@123",
+    pwd: "Examinator123",
     roles: [
         { role: "readWrite", db: "examinator" },
         { role: "dbAdmin", db: "examinator" }

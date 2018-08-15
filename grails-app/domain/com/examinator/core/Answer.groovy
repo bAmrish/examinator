@@ -1,8 +1,8 @@
 package com.examinator.core
 
-abstract class Answer<T> {
+abstract class Answer {
 
-    T value
+    def value
 
     static constraints = {
     }

@@ -10,6 +10,5 @@ class LtgtQuestion extends Question{
 
     LtgtAnswer correctAnswer
 
-    static constraints = {
-    }
+    static constraints = {}
 }

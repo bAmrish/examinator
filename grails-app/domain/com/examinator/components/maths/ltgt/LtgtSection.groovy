@@ -9,7 +9,7 @@ class LtgtSection extends Section{
     List<LtgtQuestion> questions
     LtgtSectionConfig config
 
-    static embedded = ['config']
+    static embedded = ['config', 'questions']
 
     static constraints = {}
 }

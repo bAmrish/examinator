@@ -1,6 +1,7 @@
 package com.examinator.components.maths
 
 import com.examinator.components.maths.ltgt.LtgtSection
+import com.examinator.security.authentication.User
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 
@@ -12,7 +13,10 @@ class LtgtController {
     def index() { }
 
     def create(){
-        LtgtSection section = ltgtQuestionService.createSection()
+        User user = authenticatedUser
+        println "user.username = ${user.username}"
+        println "user.id = ${user.id}"
+        LtgtSection section = ltgtQuestionService.createSection(user)
         render section as JSON
     }
 }

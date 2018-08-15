@@ -7,6 +7,7 @@ import com.examinator.components.maths.ltgt.LtgtSectionConfig
 import com.examinator.core.QuestionService
 import com.examinator.core.Section
 import com.examinator.core.SectionConfig
+import com.examinator.security.authentication.User
 import grails.gorm.transactions.Transactional
 
 @Transactional

@@ -8,10 +8,6 @@ import org.springframework.security.access.annotation.Secured
 @Secured("isFullyAuthenticated()")
 class UserSettingsController {
 
-    def index() {
-        render (authenticatedUser?.settings ?: []) as JSON
-    }
-
     def save(){
         int grade = Integer.parseInt(params["grade"].toString())
         User currentUser = (User) authenticatedUser

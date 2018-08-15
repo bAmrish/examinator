@@ -1,5 +1,6 @@
 package com.examinator.security.authentication
 
+import examinator.server.UserSettings
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 import grails.compiler.GrailsCompileStatic
@@ -17,6 +18,9 @@ class User implements Serializable {
     boolean accountExpired
     boolean accountLocked
     boolean passwordExpired
+    UserSettings settings
+
+    static embedded = ['settings']
 
     Set<Role> getAuthorities() {
         (UserRole.findAllByUser(this) as List<UserRole>)*.role as Set<Role>

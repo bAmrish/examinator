@@ -1,9 +1,13 @@
 package com.examinator.core
 
+import org.bson.types.ObjectId
+
 class UserPaper {
 
-    int userId
-    String paperId
+    ObjectId id
+    long userId
+    Paper paper
 
+    static embedded = ['paper']
     static constraints = {}
 }

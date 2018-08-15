@@ -10,7 +10,7 @@ class UrlMappings {
         }
 
         post "/temp/" (controller: "temp", action: "save")
-
+        "/user/paper/$action" (controller: "userPaper")
 
         "/"(view:"/index")
         "500"(view:'/error')

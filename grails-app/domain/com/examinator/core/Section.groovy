@@ -1,8 +1,7 @@
 package com.examinator.core
 
-import com.examinator.security.authentication.User
-
 abstract class Section {
+    String __thisClazzName__ = this.getClass().getCanonicalName()
     String subject
     String type
     String title

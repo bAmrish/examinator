@@ -22,6 +22,12 @@ class UserPaperController {
         render paper as JSON
     }
 
+    def find(){
+        String paperId = params["paperId"]
+        UserPaper paper = userPaperService.getPaper(paperId)
+        render paper as JSON
+    }
+
     def list(){
         User currentUser = (User) authenticatedUser
         List<UserPaper> papers = userPaperService.getAllPapers(currentUser)

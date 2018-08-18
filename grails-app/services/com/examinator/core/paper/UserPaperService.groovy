@@ -29,7 +29,8 @@ class UserPaperService {
 
     UserPaper getPaper(String paperId) {
         ObjectId id = new ObjectId(paperId)
-        UserPaper paper = UserPaper.find(eq('id',id)).first()
+        def document = UserPaper.collection.find(eq('_id',id)).first()
+        UserPaper paper = documentToUserPaperDomain(document)
         return paper
     }
 
@@ -47,7 +48,7 @@ class UserPaperService {
         def documentSections = document["paper"]["sections"]
         List<Section> sections = documentSections.collect { documentSection ->
             String clazzName = documentSection["__thisClazzName__"]
-            grailsApplication.getClassForName(clazzName).newInstance(documentSection)
+            return grailsApplication.getClassForName(clazzName).newInstance(documentSection)
         }
         userPaper.paper.sections = sections
         return userPaper

@@ -45,6 +45,7 @@ class UserPaperService {
 
     private static UserPaper documentToUserPaperDomain(def document){
         UserPaper userPaper = (UserPaper) document
+        userPaper.id = new ObjectId(document["_id"].toString())
         def documentSections = document["paper"]["sections"]
         List<Section> sections = documentSections.collect { documentSection ->
             String clazzName = documentSection["__thisClazzName__"]

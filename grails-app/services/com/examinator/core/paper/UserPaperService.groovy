@@ -17,7 +17,7 @@ import grails.gorm.transactions.Transactional
 class UserPaperService {
 
     def questionPaperService
-    GrailsApplication grailsApplication
+    static GrailsApplication grailsApplication
 
     UserPaper generateNewPaper(User user, String subject) {
         int grade = user.settings.grade
@@ -37,12 +37,12 @@ class UserPaperService {
 
         FindIterable iterable = UserPaper.collection.find(eq('userId', user.id))
 
-        List<UserPaper> papers = iterable.limit(10).collect {  this.documentToUserPaperDomain( it ) }
+        List<UserPaper> papers = iterable.limit(10).collect {  documentToUserPaperDomain( it ) }
 
         return  papers
     }
 
-    private UserPaper documentToUserPaperDomain(def document){
+    private static UserPaper documentToUserPaperDomain(def document){
         UserPaper userPaper = (UserPaper) document
         def documentSections = document["paper"]["sections"]
         List<Section> sections = documentSections.collect { documentSection ->

@@ -1,7 +1,6 @@
 package com.examinator
 
 import com.examinator.core.UserPaper
-import com.examinator.security.authentication.Role
 import com.examinator.security.authentication.User
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
@@ -16,7 +15,9 @@ class UserPaperController {
         String subject = request.JSON["subject"]
         User currentUser = (User) authenticatedUser
         UserPaper paper = userPaperService.generateNewPaper(currentUser, subject)
-        render paper as JSON
+        Map displayConfig = this.getUserDisplayConfig(params)
+        Map paperMap = paper.forDisplay(displayConfig)
+        render paperMap as JSON
     }
 
     def find(){

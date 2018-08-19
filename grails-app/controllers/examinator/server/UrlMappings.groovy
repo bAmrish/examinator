@@ -10,7 +10,10 @@ class UrlMappings {
         }
 
         post "/temp/" (controller: "temp", action: "save")
-        "/user/paper/$action" (controller: "userPaper")
+
+        get "/user/paper" (controller: "userPaper", action: "list")
+        put "/user/paper" (controller: "userPaper", action: "create")
+        get "/user/paper/$paperId" (controller: "userPaper", action: "find")
 
         "/"(view:"/index")
         "500"(view:'/error')

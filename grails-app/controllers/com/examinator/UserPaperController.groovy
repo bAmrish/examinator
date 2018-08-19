@@ -9,11 +9,6 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(["isFullyAuthenticated()"])
 class UserPaperController {
 
-    static allowedMethods = [
-            "create": ['PUT'],
-            "list": ['GET']
-    ]
-
     def userService
     def userPaperService
 
@@ -27,7 +22,9 @@ class UserPaperController {
     def find(){
         String paperId = params["paperId"]
         UserPaper paper = userPaperService.getPaper(paperId)
-        render paper as JSON
+        Map displayConfig = this.getUserDisplayConfig(params)
+        Map paperMap = paper.forDisplay(displayConfig)
+        render paperMap as JSON
     }
 
     def list(){

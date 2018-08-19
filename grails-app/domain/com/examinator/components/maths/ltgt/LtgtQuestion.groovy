@@ -11,4 +11,9 @@ class LtgtQuestion extends Question{
     LtgtAnswer correctAnswer
 
     static constraints = {}
+
+    @Override
+    Map forDisplay(Map config, Question that) {
+        return super.forDisplay(config, that)
+    }
 }

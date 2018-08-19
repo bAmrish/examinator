@@ -31,6 +31,12 @@ class UserPaperController {
     def list(){
         User currentUser = (User) authenticatedUser
         List<UserPaper> papers = userPaperService.getAllPapers(currentUser)
-        render papers as JSON
+        Map displayConfig = [
+                question : [
+                        displayAll: true
+                ]
+        ]
+        List<Map> papersDisplayMap = papers.collect { it.forDisplay(displayConfig) }
+        render papersDisplayMap as JSON
     }
 }

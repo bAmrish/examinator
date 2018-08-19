@@ -8,4 +8,9 @@ class LtgtAnswer extends  Answer{
 
     static constraints = {
     }
+
+    @Override
+    Map forDisplay(Map config, Answer that) {
+        return super.forDisplay(config, that)
+    }
 }

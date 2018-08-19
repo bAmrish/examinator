@@ -22,7 +22,7 @@ class UserPaperService {
     UserPaper generateNewPaper(User user, String subject) {
         int grade = user.settings.grade
         Paper paper = questionPaperService.getPaper(grade, subject)
-        UserPaper userPaper = new UserPaper([userId: user.id, paper: paper])
+        UserPaper userPaper = new UserPaper([userId: user.id, paper: paper, status: PaperStatus.INCOMPLETE])
         userPaper.save()
         return userPaper
     }

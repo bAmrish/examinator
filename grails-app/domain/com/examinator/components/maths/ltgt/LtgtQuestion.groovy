@@ -14,6 +14,10 @@ class LtgtQuestion extends Question{
 
     @Override
     Map forDisplay(Map config, Question that) {
-        return super.forDisplay(config, that)
+        Map questionDisplayMap = super.forDisplay(config, that)
+        questionDisplayMap["number1"] = number1
+        questionDisplayMap["number2"] = number2
+
+        return questionDisplayMap
     }
 }

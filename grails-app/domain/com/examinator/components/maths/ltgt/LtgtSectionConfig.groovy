@@ -8,6 +8,27 @@ class LtgtSectionConfig extends SectionConfig {
     int totalQuestions
     int seed
 
-    static constraints = {
+    static constraints = {}
+
+    @Override
+    Map forDisplay(Map config) {
+        Map sectionConfigMap = super.forDisplay(config)
+
+        boolean displayAll = false
+
+        if(config?.section?.displayAll){
+            displayAll = config.section.displayAll
+        }
+
+        sectionConfigMap["min"] = min
+        sectionConfigMap["max"] = max
+        sectionConfigMap["totalQuestions"] = totalQuestions
+
+        if(displayAll){
+            sectionConfigMap["seed"] = seed
+        }
+
+        return sectionConfigMap
+
     }
 }

@@ -6,8 +6,7 @@ class LtgtAnswer extends  Answer{
 
     String value
 
-    static constraints = {
-    }
+    static constraints = { }
 
     @Override
     Map forDisplay(Map config, Answer that) {

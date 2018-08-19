@@ -1,6 +1,7 @@
 package com.examinator
 
 import com.examinator.core.UserPaper
+import com.examinator.security.authentication.Role
 import com.examinator.security.authentication.User
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
@@ -13,6 +14,7 @@ class UserPaperController {
             "list": ['GET']
     ]
 
+    def userService
     def userPaperService
 
     def create(){
@@ -31,12 +33,24 @@ class UserPaperController {
     def list(){
         User currentUser = (User) authenticatedUser
         List<UserPaper> papers = userPaperService.getAllPapers(currentUser)
-        Map displayConfig = [
-                question : [
-                        displayAll: true
-                ]
-        ]
+        Map displayConfig = this.getUserDisplayConfig(params)
         List<Map> papersDisplayMap = papers.collect { it.forDisplay(displayConfig) }
         render papersDisplayMap as JSON
+    }
+
+    private Map getUserDisplayConfig(Map requestParams){
+        boolean displayAll = requestParams["displayAll"]
+        if(userService.isAdmin() && displayAll) {
+            return [
+                question : [
+                    displayAll: true
+                ],
+                section: [
+                    displayAll: true
+                ]
+            ]
+        }
+
+        return null
     }
 }

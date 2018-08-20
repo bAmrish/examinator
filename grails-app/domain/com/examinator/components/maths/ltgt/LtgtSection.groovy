@@ -18,6 +18,11 @@ class LtgtSection extends Section{
     static constraints = {}
 
     @Override
+    boolean validate() {
+        return false
+    }
+
+    @Override
     Map forDisplay(Map displayConfig, Section that) {
         Map ltgtSectionDisplayMap =  super.forDisplay(displayConfig, that)
 

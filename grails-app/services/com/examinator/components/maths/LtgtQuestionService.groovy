@@ -9,6 +9,7 @@ import com.examinator.core.Section
 import com.examinator.core.SectionConfig
 import com.examinator.security.authentication.User
 import grails.gorm.transactions.Transactional
+import org.bson.types.ObjectId
 
 @Transactional
 class LtgtQuestionService extends QuestionService {

@@ -1,6 +1,6 @@
 package com.examinator.core.paper
 
-import com.examinator.components.maths.ltgt.LtgtSectionConfig
+import com.examinator.products.ltgt.domain.LtgtSectionConfig
 import com.examinator.core.Paper
 import com.examinator.core.QuestionService
 import com.examinator.core.SectionConfig

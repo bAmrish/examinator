@@ -1,4 +1,4 @@
-package com.examinator.components.maths.ltgt
+package com.examinator.products.ltgt.domain
 
 import com.examinator.core.Section
 
@@ -14,8 +14,6 @@ class LtgtSection extends Section{
     LtgtSectionConfig config
 
     static embedded = ['config', 'questions']
-
-    static constraints = {}
 
     @Override
     boolean validate() {

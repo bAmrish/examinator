@@ -1,15 +1,12 @@
-package com.examinator.components.maths
+package com.examinator.products.ltgt.services
 
-import com.examinator.components.maths.ltgt.LtgtAnswer
-import com.examinator.components.maths.ltgt.LtgtQuestion
-import com.examinator.components.maths.ltgt.LtgtSection
-import com.examinator.components.maths.ltgt.LtgtSectionConfig
+import com.examinator.products.ltgt.domain.LtgtAnswer
+import com.examinator.products.ltgt.domain.LtgtQuestion
+import com.examinator.products.ltgt.domain.LtgtSection
+import com.examinator.products.ltgt.domain.LtgtSectionConfig
 import com.examinator.core.QuestionService
-import com.examinator.core.Section
 import com.examinator.core.SectionConfig
-import com.examinator.security.authentication.User
 import grails.gorm.transactions.Transactional
-import org.bson.types.ObjectId
 
 @Transactional
 class LtgtQuestionService extends QuestionService {

@@ -1,10 +1,10 @@
 package com.examinator.components.maths
 
-import com.examinator.components.maths.ltgt.LtgtAnswer
-import com.examinator.components.maths.ltgt.LtgtQuestion
-import com.examinator.components.maths.ltgt.LtgtSection
-import com.examinator.components.maths.ltgt.LtgtSectionConfig
-import com.examinator.core.SectionConfig
+import com.examinator.products.ltgt.domain.LtgtQuestion
+import com.examinator.products.ltgt.domain.LtgtSection
+import com.examinator.products.ltgt.domain.LtgtSectionConfig
+import com.examinator.products.ltgt.domain.LtgtAnswer
+import com.examinator.products.ltgt.services.LtgtQuestionService
 import grails.testing.gorm.DomainUnitTest
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification

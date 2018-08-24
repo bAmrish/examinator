@@ -4,6 +4,8 @@ import org.bson.types.ObjectId
 
 abstract class Question implements Displayable{
 
+    String __thisClazzName__ = this.getClass().getCanonicalName()
+
     ObjectId id
 
     Question() {

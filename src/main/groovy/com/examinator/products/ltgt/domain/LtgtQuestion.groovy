@@ -1,4 +1,4 @@
-package com.examinator.components.maths.ltgt
+package com.examinator.products.ltgt.domain
 
 import com.examinator.core.Question
 
@@ -9,8 +9,6 @@ class LtgtQuestion extends Question{
     LtgtAnswer userAnswer
 
     LtgtAnswer correctAnswer
-
-    static constraints = {}
 
     @Override
     Map forDisplay(Map config, Question that) {

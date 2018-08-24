@@ -1,12 +1,10 @@
-package com.examinator.components.maths.ltgt
+package com.examinator.products.ltgt.domain
 
 import com.examinator.core.Answer
 
 class LtgtAnswer extends  Answer{
 
     String value
-
-    static constraints = { }
 
     @Override
     Map forDisplay(Map config, Answer that) {

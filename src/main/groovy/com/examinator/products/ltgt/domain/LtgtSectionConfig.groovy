@@ -1,4 +1,4 @@
-package com.examinator.components.maths.ltgt
+package com.examinator.products.ltgt.domain
 
 import com.examinator.core.SectionConfig
 
@@ -7,8 +7,6 @@ class LtgtSectionConfig extends SectionConfig {
     int max
     int totalQuestions
     int seed
-
-    static constraints = {}
 
     @Override
     Map forDisplay(Map config) {

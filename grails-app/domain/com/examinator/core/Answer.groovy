@@ -4,6 +4,8 @@ abstract class Answer implements Displayable{
 
     def value
 
+    String __thisClazzName__ = this.getClass().getCanonicalName()
+
     static constraints = {}
 
     @Override

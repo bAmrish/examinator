@@ -1,6 +1,6 @@
 package com.examinator.components.maths
 
-import com.examinator.components.maths.ltgt.LtgtSection
+import com.examinator.products.ltgt.domain.LtgtSection
 import com.examinator.security.authentication.User
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured

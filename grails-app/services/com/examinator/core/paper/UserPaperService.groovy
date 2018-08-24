@@ -1,6 +1,8 @@
 package com.examinator.core.paper
 
+import com.examinator.core.Answer
 import com.examinator.core.Paper
+import com.examinator.core.Question
 import com.examinator.core.Section
 import com.examinator.core.UserPaper
 import com.examinator.security.authentication.User
@@ -47,11 +49,45 @@ class UserPaperService {
         UserPaper userPaper = (UserPaper) document
         userPaper.id = new ObjectId(document["_id"].toString())
         def documentSections = document["paper"]["sections"]
-        List<Section> sections = documentSections.collect { documentSection ->
-            String clazzName = documentSection["__thisClazzName__"]
-            return grailsApplication.getClassForName(clazzName).newInstance(documentSection)
-        }
+        List<Section> sections = documentSections.collect { createSection(it) }
+
         userPaper.paper.sections = sections
         return userPaper
+    }
+
+    private static Section createSection(def sectionDocument){
+
+        String sectionClassName = sectionDocument["__thisClazzName__"]
+        Section section = Class.forName(sectionClassName).newInstance(sectionDocument)
+
+        List<Question> questions = section.questions.collect { questionDocument ->
+            String questionClassName = questionDocument["__thisClazzName__"]
+
+            def correctAnswerDocument = questionDocument["correctAnswer"]
+
+            if(correctAnswerDocument){
+                String correctAnswerClassName = correctAnswerDocument["__thisClazzName__"]
+
+                Answer correctAnswer = Class.forName(correctAnswerClassName).newInstance(correctAnswerDocument)
+                questionDocument["correctAnswer"] = correctAnswer
+            }
+
+            def userAnswerDocument = questionDocument["userAnswer"]
+            if(userAnswerDocument){
+                String userAnswerClassName = userAnswerDocument["__thisClazzName__"]
+
+                Answer userAnswer = Class.forName(userAnswerClassName).newInstance(userAnswerDocument)
+                questionDocument["userAnswer"] = userAnswer
+            }
+
+            Question question =  Class.forName(questionClassName).newInstance(questionDocument)
+
+            return question
+        }
+
+        section.questions = questions
+
+        return section
+
     }
 }

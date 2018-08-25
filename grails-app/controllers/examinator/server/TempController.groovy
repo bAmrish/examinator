@@ -7,10 +7,12 @@ import org.springframework.security.access.annotation.Secured
 class TempController {
 
     def tempAccessService
+    def configLoaderService
 
     def index() {
         println("This is index method")
-        render "Index method."
+        Map configMap = configLoaderService.loadProductConfigurations()
+        render configMap as JSON
     }
 
     def save() {

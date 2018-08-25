@@ -8,6 +8,15 @@ class LtgtSectionConfig extends SectionConfig {
     int totalQuestions
     int seed
 
+    Map <String, Class<?>> getKeyDefinitionMap(){
+        return [
+            "min": int,
+            "max": int,
+            "totalQuestions": int,
+            "seed": int
+        ]
+    }
+
     @Override
     Map forDisplay(Map config) {
         Map sectionConfigMap = super.forDisplay(config)

@@ -48,19 +48,19 @@ class ConfigLoaderService {
         String sectionName = productMap["sectionName"]
         if(!sectionName){
             log.error "Product configuration map not loaded. Section name not found."
-            return
+            return null
         }
 
         String grade = productMap["grade"]
         if(!grade){
             log.error "Error loading product configuration map for type $sectionName. Grade not defined."
-            return
+            return null
         }
 
         String subject = productMap["subject"]
         if(!subject){
             log.error "Error loading product configuration map for type $sectionName. Subject not defined"
-            return
+            return null
         }
 
         String serviceName = productMap["serviceName"]
@@ -68,14 +68,14 @@ class ConfigLoaderService {
             log.error "Error loading product configuration map for type $sectionName. Service name not defined."
         }
 
-        SectionConfig defaultSectionConfig = productMap["defaultSectionConfig"]
+        SectionConfig defaultSectionConfig = (SectionConfig) productMap["defaultSectionConfig"]
         if(!defaultSectionConfig){
             log.warn("No section config specified for type $sectionName.")
         }
 
-        Map gradesMap = this.allProductConfigMap["grades"]
+        Map gradesMap = (Map)this.allProductConfigMap["grades"]
 
-        Map gradeMap = gradesMap[grade]
+        Map gradeMap = (Map)gradesMap[grade]
 
         if(!gradeMap){
             gradeMap = this.allProductConfigMap["grades"][grade] = [:]

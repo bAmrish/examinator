@@ -17,7 +17,7 @@ final class LtgtProductConfiguration {
                serviceName: "ltgtQuestionService",
                defaultSectionConfig: defaultSectionConfig
        ]
-         
+
         return configMap
     }
 }

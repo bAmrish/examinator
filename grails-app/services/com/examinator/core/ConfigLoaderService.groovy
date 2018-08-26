@@ -7,7 +7,9 @@ import org.grails.io.support.GrailsResourceUtils
 @Transactional
 class ConfigLoaderService {
 
-    Map allProductConfigMap = [:]
+    Map allProductConfigMap = [
+            grades: [:]
+    ]
 
     Map loadProductConfigurations(){
 
@@ -71,13 +73,18 @@ class ConfigLoaderService {
             log.warn("No section config specified for type $sectionName.")
         }
 
-        Map gradeMap = (Map)this.allProductConfigMap["grade"]
+        Map gradesMap = this.allProductConfigMap["grades"]
+
+        Map gradeMap = gradesMap[grade]
+
         if(!gradeMap){
-            gradeMap = this.allProductConfigMap["grade"] = [:]
+            gradeMap = this.allProductConfigMap["grades"][grade] = [:]
         }
-        Map subjectMap = (Map)gradeMap["subject"]
+
+        Map subjectMap = (Map)gradeMap[subject]
+
         if(!subjectMap){
-            subjectMap = gradeMap["subject"] = [:]
+            subjectMap = gradeMap[subject] = [:]
         }
 
         Map sectionMap = [:]
@@ -87,6 +94,5 @@ class ConfigLoaderService {
 
         return this.allProductConfigMap
     }
-
 
 }

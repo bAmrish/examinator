@@ -62,10 +62,15 @@ class LtgtQuestionService extends QuestionService {
             inConfig = new LtgtSectionConfig()
         }
 
-        outConfig.min = inConfig.min ?: 1
-        outConfig.max = inConfig.max ?: 10
-        outConfig.totalQuestions = inConfig.totalQuestions ?: 10
-        outConfig.seed = inConfig.seed ?: getRandomSeed()
+        outConfig.min =  1
+        outConfig.max = 10
+        outConfig.totalQuestions = 10
+        outConfig.seed = getRandomSeed()
+
+//        outConfig.min = inConfig.min ?: 1
+//        outConfig.max = inConfig.max ?: 10
+//        outConfig.totalQuestions = inConfig.totalQuestions ?: 10
+//        outConfig.seed = inConfig.seed ?: getRandomSeed()
 
         return outConfig
     }

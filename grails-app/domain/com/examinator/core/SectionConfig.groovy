@@ -2,7 +2,7 @@ package com.examinator.core
 
 import grails.converters.JSON
 
-abstract class SectionConfig extends HashMap implements Displayable{
+abstract class SectionConfig implements Displayable{
 
     abstract Map <String, Class<?>> getKeyDefinitionMap()
 
